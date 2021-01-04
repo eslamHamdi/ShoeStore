@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">ShoeStore</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="email">Email</string>
+    <string name="password">PassWord</string>
+    <string name="enter_your_email">enter your email</string>
+    <string name="enter_your_password">enter your password</string>
+    <string name="newuser">Register</string>
+    <string name="login">login</string>
+    <string name="welcome_to_the_shoe_store">Welcome To The Shoe Store</string>
+    <string name="tap_below_to_go_to_instructions">Tap below to go to instructions</string>
+    <string name="instructions">Instructions</string>
+    <string name="_1_navigate_to_shoelist_page_and_scroll_down_to_see_all_the_list">1- Tap the List buttom to Navigate to ShoeList page and scroll down to see all the List</string>
+    <string name="use_shoe_detail_page">2-Use Shoe Detail Page to add more shoes to the list</string>
+    <string name="navigate_to_shoe_list">Navigate to shoe list</string>
 </resources>
