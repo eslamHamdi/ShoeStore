@@ -13,4 +13,10 @@
     <string name="_1_navigate_to_shoelist_page_and_scroll_down_to_see_all_the_list">1- Tap the List buttom to Navigate to ShoeList page and scroll down to see all the List</string>
     <string name="use_shoe_detail_page">2-Use Shoe Detail Page to add more shoes to the list</string>
     <string name="navigate_to_shoe_list">Navigate to shoe list</string>
+    <string name="shoesname">Name: %1$s</string>
+    <string name="shoessize">Size: %1$d</string>
+    <string name="shoescompany">Company: %1$s</string>
+    <string name="description">Description: %1$s</string>
+    <string name="addshoes">addshoes</string>
+
 </resources>
