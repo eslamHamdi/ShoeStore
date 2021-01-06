@@ -18,5 +18,16 @@
     <string name="shoescompany">Company: %1$s</string>
     <string name="description">Description: %1$s</string>
     <string name="addshoes">addshoes</string>
+    <string name="proceed">Proceed</string>
+    <string name="enter_new_shoe_detail">Enter New Shoe Detail</string>
+
+    <string-array name="shoes_array">
+        <item>adidas</item>
+        <item>nike</item>
+        <item>nikeblue</item>
+        <item>nikewhite</item>
+        <item>reebok</item>
+    </string-array>
+
 
 </resources>
