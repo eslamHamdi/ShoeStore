@@ -6,38 +6,58 @@
     android:orientation="vertical"
     tools:context=".ui.shoedetail.ShoeDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/text_style"
         android:text="@string/enter_new_shoe_detail"
         android:layout_gravity="center"/>
     <EditText
+        android:id="@+id/enter_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ShoeName"
+        android:hint="@string/shoename_entry"
         android:inputType="text" />
     <EditText
+        android:id="@+id/enter_company"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ShoeName"
+        android:hint="@string/company_entry"
         android:inputType="text" />
     <EditText
+        android:id="@+id/enter_size"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ShoeName"
-        android:inputType="text" />
+        android:hint="@string/size_entry"
+        android:inputType="number" />
     <EditText
+        android:id="@+id/enter_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ShoeName"
+        android:hint="@string/description_entry"
         android:inputType="text" />
 
     <Spinner
+        android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:prompt="Select an image"
         />
+
+    <Button
+        android:id="@+id/shoe_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/save"/>
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/cancel"/>
 
 
 </LinearLayout>

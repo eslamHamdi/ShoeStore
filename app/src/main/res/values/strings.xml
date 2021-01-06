@@ -20,8 +20,15 @@
     <string name="addshoes">addshoes</string>
     <string name="proceed">Proceed</string>
     <string name="enter_new_shoe_detail">Enter New Shoe Detail</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="description_entry">Description</string>
+    <string name="size_entry">size</string>
+    <string name="company_entry">Company</string>
+    <string name="shoename_entry">ShoeName</string>
 
     <string-array name="shoes_array">
+        <item>Images :</item>
         <item>adidas</item>
         <item>nike</item>
         <item>nikeblue</item>
