@@ -1,63 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.shoedetail.ShoeDetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/text_style"
-        android:text="@string/enter_new_shoe_detail"
-        android:layout_gravity="center"/>
-    <EditText
-        android:id="@+id/enter_name"
+    <data>
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/shoename_entry"
-        android:inputType="text" />
-    <EditText
-        android:id="@+id/enter_company"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/company_entry"
-        android:inputType="text" />
-    <EditText
-        android:id="@+id/enter_size"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/size_entry"
-        android:inputType="number" />
-    <EditText
-        android:id="@+id/enter_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/description_entry"
-        android:inputType="text" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.shoedetail.ShoeDetailFragment">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:prompt="Select an image"
-        />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_style"
+            android:text="@string/enter_new_shoe_detail"
+            android:layout_gravity="center" />
 
-    <Button
-        android:id="@+id/shoe_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/save"/>
+        <EditText
+            android:id="@+id/enter_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/shoename_entry"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/cancel"/>
+        <EditText
+            android:id="@+id/enter_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/company_entry"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/enter_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/size_entry"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/enter_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/description_entry"
+            android:inputType="text" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/shoe_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/save" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/cancel" />
 
 
-</LinearLayout>
+    </LinearLayout>
+</layout>
