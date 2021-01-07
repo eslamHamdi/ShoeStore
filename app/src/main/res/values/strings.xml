@@ -26,6 +26,8 @@
     <string name="size_entry">size</string>
     <string name="company_entry">Company</string>
     <string name="shoename_entry">ShoeName</string>
+    <string name="shoelist_drawer">ShoeList</string>
+    <string name="addnewitem">AddNewItem</string>
 
     <string-array name="shoes_array">
         <item>Images :</item>
