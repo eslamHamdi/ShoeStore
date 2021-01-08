@@ -29,19 +29,11 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
     lateinit var factory: ViewModelFactory
 
 
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View
+    {
         // Inflate the layout for this fragment
 
         val binding :FragmentShoeDetailBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_shoe_detail,container,false)
@@ -71,7 +63,7 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
         Company = binding.enterCompany.text.toString()
         Size = binding.enterSize.text.toString().toDouble()
         Description =binding.enterDescription.text.toString()
-       //Image = spinner.selectedItem.toString()
+
 
 
 
@@ -119,7 +111,8 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
     {
-        
+        if (position > 0)
+       Image = parent?.getItemAtPosition(position).toString()
 
     }
 
