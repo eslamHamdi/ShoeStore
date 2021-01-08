@@ -1,4 +1,18 @@
 package com.example.shoestore.ui.shoedetail
 
-class ViewModelFactory {
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.example.shoestore.model.Shoe
+
+class ViewModelFactory(private val shoe:Shoe?) : ViewModelProvider.Factory  {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T
+    {
+        if (modelClass.isAssignableFrom(ShowDetailViewModel::class.java)) {
+            return ShowDetailViewModel(shoe!!) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+
+    }
+
+
 }
