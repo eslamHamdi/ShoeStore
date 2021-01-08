@@ -64,28 +64,32 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
              binding.enterCompany.text = savedInstanceState.get("company") as Editable?
         binding.enterSize.text = savedInstanceState.get("size") as Editable?
            binding.enterDescription.text = savedInstanceState.get("description") as Editable?
+
         }
 
         Name = binding.enterName.text.toString()
         Company = binding.enterCompany.text.toString()
-        Size = binding.enterSize.toString().toDouble()
+        Size = binding.enterSize.text.toString().toDouble()
         Description =binding.enterDescription.text.toString()
-        Image = spinner.selectedItem.toString()
+       //Image = spinner.selectedItem.toString()
 
-        shoe?.apply {
 
-            this.name = Name
-            this.company = Company
-            this.size = Size
-            this.description = Description
-            this.images.toMutableList().add(Image)
 
-        }
-        factory = ViewModelFactory(shoe)
-        viewModel = ViewModelProvider(this, factory)
-                .get(ShowDetailViewModel::class.java)
 
         binding.shoeSave.setOnClickListener {
+
+            shoe?.apply {
+
+                this.name = Name
+                this.company = Company
+                this.size = Size
+                this.description = Description
+                this.images.toMutableList().add(Image)
+
+            }
+            factory = ViewModelFactory(shoe)
+            viewModel = ViewModelProvider(this, factory)
+                    .get(ShowDetailViewModel::class.java)
 
             findNavController().navigate(ShoeDetailFragmentDirections
                     .actionShoeDetailFragmentToNewShoeListFragment(viewModel.getShoe()))
@@ -115,6 +119,7 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
     {
+        
 
     }
 
