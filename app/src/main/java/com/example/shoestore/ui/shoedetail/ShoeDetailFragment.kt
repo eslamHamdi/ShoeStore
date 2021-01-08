@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.example.shoestore.R
+import com.example.shoestore.databinding.FragmentShoeDetailBinding
 
 
 class ShoeDetailFragment : Fragment() {
@@ -23,7 +25,9 @@ class ShoeDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shoe_detail, container, false)
+
+        val binding :FragmentShoeDetailBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_shoe_detail,container,false)
+        return binding.root
     }
 
 

@@ -10,7 +10,7 @@ import com.example.shoestore.R
 import com.example.shoestore.model.Shoe
 
 
-class ShoeListAdapter(var ShoesList: MutableList<Shoe>?):RecyclerView.Adapter<ShoeListAdapter.Viewholder>()
+class ShoeListAdapter(var ShoesList: MutableList<Shoe?>?):RecyclerView.Adapter<ShoeListAdapter.Viewholder>()
 {
 
 
@@ -62,5 +62,11 @@ class ShoeListAdapter(var ShoesList: MutableList<Shoe>?):RecyclerView.Adapter<Sh
 
     override fun getItemCount(): Int {
         return ShoesList?.size ?: 0
+    }
+
+    fun getShoeList(ShoesList: MutableList<Shoe?>?)
+    {
+        this.ShoesList = ShoesList
+        notifyDataSetChanged()
     }
 }
