@@ -10,23 +10,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
-        tools:context=".ui.WelcomeFragment"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:context=".ui.WelcomeFragment">
 
-        <!-- TODO: Update blank fragment layout -->
+
         <TextView
+            style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            style="@style/text_style"
             android:text="@string/welcome_to_the_shoe_store" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
             android:layout_gravity="center_horizontal"
-            android:text="@string/tap_below_to_go_to_instructions" />
+            android:text="@string/tap_below_to_go_to_instructions"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/instruct"

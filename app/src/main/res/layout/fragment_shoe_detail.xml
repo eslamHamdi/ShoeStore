@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 <variable
@@ -26,14 +26,14 @@
 
         <TextView
             android:id="@+id/name_text"
+            style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/text_style"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title"
             android:layout_marginTop="@dimen/marginlarge"
             android:layout_marginEnd="@dimen/small_margin"
-            android:text="@string/shoename"/>
+            android:text="@string/shoename"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"/>
 
         <EditText
             android:id="@+id/enter_name"
@@ -41,25 +41,25 @@
             android:layout_height="wrap_content"
             android:hint="@string/shoename_entry"
             android:inputType="text"
+            android:padding="@dimen/small_margin"
             android:text="@={detailFragment.name}"
-            app:layout_constraintTop_toTopOf="@id/name_text"
-            app:layout_constraintStart_toEndOf="@id/name_text"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/name_text"
-            android:padding="@dimen/small_margin"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/name_text"
+            app:layout_constraintTop_toTopOf="@id/name_text"/>
 
         <TextView
             android:id="@+id/company_text"
+            style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/text_style"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name_text"
             android:layout_marginTop="@dimen/small_margin"
-            app:layout_constraintEnd_toStartOf="@id/enter_company"
-            app:layout_constraintBottom_toBottomOf="@id/enter_company"
             android:layout_marginEnd="@dimen/small_margin"
-            android:text="@string/showcompany"/>
+            android:text="@string/showcompany"
+            app:layout_constraintBottom_toBottomOf="@id/enter_company"
+            app:layout_constraintEnd_toStartOf="@id/enter_company"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_text"/>
 
         <EditText
             android:id="@+id/enter_company"
@@ -67,47 +67,47 @@
             android:layout_height="wrap_content"
             android:hint="@string/company_entry"
             android:inputType="text"
-            android:text="@={detailFragment.company}"
-            app:layout_constraintStart_toEndOf="@id/company_text"
-            app:layout_constraintEnd_toEndOf="parent"
             android:padding="@dimen/small_margin"
+            android:text="@={detailFragment.company}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/company_text"
             app:layout_constraintTop_toTopOf="@id/company_text"
             />
 
         <TextView
             android:id="@+id/size_text"
+            style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/text_style"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/company_text"
             android:layout_marginTop="@dimen/marginlarge"
-            app:layout_constraintEnd_toStartOf="@id/enter_size"
             android:layout_marginEnd="@dimen/small_margin"
-            android:text="@string/shoesize"/>
+            android:text="@string/shoesize"
+            app:layout_constraintEnd_toStartOf="@id/enter_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/company_text"/>
 
         <EditText
             android:id="@+id/enter_size"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/size_entry"
+            android:padding="@dimen/small_margin"
             android:text="@={detailFragment.size}"
-            app:layout_constraintTop_toTopOf="@id/size_text"
             app:layout_constraintBottom_toBottomOf="@id/size_text"
-            app:layout_constraintStart_toEndOf="@id/size_text"
             app:layout_constraintEnd_toEndOf="parent"
-            android:padding="@dimen/small_margin"/>
+            app:layout_constraintStart_toEndOf="@id/size_text"
+            app:layout_constraintTop_toTopOf="@id/size_text"/>
 
         <TextView
             android:id="@+id/description_text"
+            style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/text_style"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/size_text"
             android:layout_marginTop="@dimen/marginlarge"
             android:layout_marginEnd="@dimen/small_margin"
-            android:text="@string/shoe_description"/>
+            android:text="@string/shoe_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/size_text"/>
 
         <EditText
             android:id="@+id/enter_description"
@@ -115,20 +115,20 @@
             android:layout_height="wrap_content"
             android:hint="@string/description_entry"
             android:inputType="text"
+            android:padding="@dimen/small_margin"
             android:text="@={detailFragment.description}"
-            app:layout_constraintTop_toTopOf="@id/description_text"
-            app:layout_constraintStart_toEndOf="@id/description_text"
             app:layout_constraintBottom_toBottomOf="@id/description_text"
             app:layout_constraintEnd_toEndOf="parent"
-            android:padding="@dimen/small_margin"
+            app:layout_constraintStart_toEndOf="@id/description_text"
+            app:layout_constraintTop_toTopOf="@id/description_text"
          />
 
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/small_margin"
             android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/enter_description" />
 

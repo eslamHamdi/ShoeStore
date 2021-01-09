@@ -14,33 +14,33 @@
 
         <TextView
             android:id="@+id/intruction_1"
+            style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="@string/_1_navigate_to_shoelist_page_and_scroll_down_to_see_all_the_list"
             android:layout_margin="@dimen/marginlarge"
-            style="@style/text_style" />
+            android:text="@string/_1_navigate_to_shoelist_page_and_scroll_down_to_see_all_the_list"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/instruction_2"
+            style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/intruction_1"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/marginlarge"
             android:text="@string/use_shoe_detail_page"
-            style="@style/text_style"
-            android:layout_margin="@dimen/marginlarge" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/intruction_1" />
 
         <Button
             android:id="@+id/proceed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/proceed"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/proceed" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

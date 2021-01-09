@@ -28,7 +28,6 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
     var Description:String= "null"
     var Image: MutableList<String> = mutableListOf()
     var shoe: Shoe? =Shoe("",0.0,"","")
-    var flag = true
     val viewModel: ShowListViewModel by activityViewModels()
 
     override fun onCreateView(
