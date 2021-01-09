@@ -27,7 +27,7 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
     var Size :String = "0.0"
     var Description:String= "null"
     var Image: MutableList<String> = mutableListOf()
-    var shoe: Shoe? =Shoe("null",0.0,"null","null")
+    var shoe: Shoe? =Shoe("",0.0,"","")
     var flag = false
     val viewModel: ShowListViewModel by activityViewModels()
 
@@ -43,6 +43,8 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
         binding.detailFragment = this
 
+
+        //restoring ui after any configuration changes
         if (savedInstanceState != null)
         {
            binding.enterName.text = savedInstanceState.get("Name") as Editable?
@@ -63,17 +65,15 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
             // Apply the adapter to the spinner
             spinner.adapter = adapter
         }
-        spinner.prompt = "Choose an Image"
         spinner.onItemSelectedListener = this
-
 
 
 
         binding.shoeSave.setOnClickListener {
             //avoid choosing title as image source
-            flag = Image.contains("Images :")
-
-            if (!flag)
+            flag = Image.contains(getString(R.string.flag))
+             //make sure the list is not empty
+            if (!flag && Image.isNotEmpty())
             {
                 shoe?.apply {
 
@@ -91,8 +91,12 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
             else
             {
-                Image.clear()
-                Toast.makeText(this.requireContext(),"Please ChooseProper Image",Toast.LENGTH_SHORT).show()
+                //empty the list to remove the flag word
+                if (Image.isNotEmpty())
+                {
+                    Image.clear()
+                }
+                Toast.makeText(this.requireContext(),"Please Choose Proper Image",Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -103,11 +107,9 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
         }
 
 
-
-
         return binding.root
     }
-
+//configuration changes safety
     override fun onSaveInstanceState(outState: Bundle)
     {
         super.onSaveInstanceState(outState)

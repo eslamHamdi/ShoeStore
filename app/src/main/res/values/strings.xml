@@ -36,6 +36,7 @@
     <string name="showcompany">ShoeCompany</string>
     <string name="shoesize">ShoeSize</string>
     <string name="shoe_description">Description</string>
+    <string name="flag">Images :</string>
 
     <string-array name="shoes_array">
         <item>Images :</item>

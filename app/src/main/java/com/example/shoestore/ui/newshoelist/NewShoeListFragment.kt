@@ -21,6 +21,7 @@ class NewShoeListFragment : Fragment() {
 
     val args :NewShoeListFragmentArgs by navArgs()
     var adapter = ShoeListAdapter(null)
+    //Activity model view model
     val viewModel: ShowListViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -29,11 +30,11 @@ class NewShoeListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding:FragmentNewShoeListBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_new_shoe_list,container,false)
-
+       //using a recycler for dynamic item adding instead of listview or addview
         val recycler = binding.recycler
         recycler.adapter = adapter
         val shoe = args.shoeOpject
-
+//checking if the shoe is null to avoid adding null objects to the list
 if (shoe != null)
 {
     Timber.e(println(shoe).toString())
@@ -48,10 +49,12 @@ if (shoe != null)
 
 }else
 {
+    // if shoe is null do not add it and show the last saved list
     viewModel.shoeLiveData.observe(this.requireActivity(),{
 
         adapter.getShoeList(it)
     })
+    //showing toast asking the user to add more items to the list
    Toast.makeText(this.requireContext(),"Please Add More Items",Toast.LENGTH_SHORT).show()
 }
 
@@ -61,7 +64,7 @@ if (shoe != null)
 
             findNavController().navigate(NewShoeListFragmentDirections.actionNewShoeListFragmentToShoeDetailFragment())
         }
-
+        //enable overflow menu
         setHasOptionsMenu(true)
 
         return binding.root

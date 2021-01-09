@@ -19,19 +19,11 @@ class ShoeListAdapter(var ShoesList: MutableList<Shoe?>?):RecyclerView.Adapter<S
 
     class Viewholder(itemView: View):RecyclerView.ViewHolder(itemView)
     {
-        var Image :ImageView?=null
-        var Name :TextView?=null
-        var Size:TextView?=null
-        var Company:TextView?=null
-        var Description:TextView?=null
-
-        init {
-            Image = itemView.findViewById(R.id.image)
-            Name =itemView.findViewById(R.id.name)
-            Size =itemView.findViewById(R.id.size)
-            Company =itemView.findViewById(R.id.company)
-           Description =itemView.findViewById(R.id.description)
-        }
+        var Image :ImageView? = itemView.findViewById(R.id.image)
+        var Name :TextView? = itemView.findViewById(R.id.name)
+        var Size:TextView? = itemView.findViewById(R.id.size)
+        var Company:TextView? = itemView.findViewById(R.id.company)
+        var Description:TextView? = itemView.findViewById(R.id.description)
 
 
     }
@@ -45,10 +37,10 @@ class ShoeListAdapter(var ShoesList: MutableList<Shoe?>?):RecyclerView.Adapter<S
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
 
         val context = holder.Image?.context
-        val image__name = ShoesList?.get(position)?.images?.first() ?: ""
+        val image__name = ShoesList?.get(position)?.images?.first()
         val id = context!!.resources.getIdentifier(image__name, "drawable", context.packageName)
         holder.Image?.setImageResource(id)
-
+// using string formatting
         holder.Name?.text = context.resources.getString(R.string.shoesname,ShoesList?.get(position)?.name)
         holder.Company?.text   = context.resources.getString(R.string.shoescompany,ShoesList?.get(position)?.company)
         holder.Size?.text = context.resources.getString(R.string.shoessize,ShoesList?.get(position)?.size.toString())
@@ -63,7 +55,7 @@ class ShoeListAdapter(var ShoesList: MutableList<Shoe?>?):RecyclerView.Adapter<S
     override fun getItemCount(): Int {
         return ShoesList?.size ?: 0
     }
-
+//function to update the adapter list
     fun getShoeList(ShoesList: MutableList<Shoe?>?)
     {
         this.ShoesList = ShoesList
