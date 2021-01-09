@@ -28,7 +28,7 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
     var Description:String= "null"
     var Image: MutableList<String> = mutableListOf()
     var shoe: Shoe? =Shoe("",0.0,"","")
-    var flag = false
+    var flag = true
     val viewModel: ShowListViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -70,10 +70,9 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
 
         binding.shoeSave.setOnClickListener {
-            //avoid choosing title as image source
-            flag = Image.contains(getString(R.string.flag))
+
              //make sure the list is not empty
-            if (!flag && Image.isNotEmpty())
+            if ( Image.isNotEmpty())
             {
                 shoe?.apply {
 
@@ -91,11 +90,6 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
             else
             {
-                //empty the list to remove the flag word
-                if (Image.isNotEmpty())
-                {
-                    Image.clear()
-                }
                 Toast.makeText(this.requireContext(),"Please Choose Proper Image",Toast.LENGTH_SHORT).show()
             }
 
@@ -122,9 +116,16 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
     {
+        //avoid choosing title as image source
+           if(parent?.getItemAtPosition(position).toString() == getString(R.string.flag))
+           {
+               Toast.makeText(this.requireContext(),"Don't Forget to Choose Image",Toast.LENGTH_SHORT).show()
+           }
+        else
+           {
+               Image.add(parent?.getItemAtPosition(position).toString())
+           }
 
-           val image = parent?.getItemAtPosition(position).toString()
-           Image.add(image)
 
     }
 
