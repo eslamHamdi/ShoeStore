@@ -17,8 +17,8 @@
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -32,8 +32,8 @@
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left"
-            app:popUpTo="@id/welcomeFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/instructionFragment"
+            app:popUpToInclusive="false" />
         <argument
             android:name="user"
             android:defaultValue="user"
@@ -47,8 +47,8 @@
         <action
             android:id="@+id/action_instructionFragment_to_newShoeListFragment"
             app:destination="@id/newShoeListFragment"
-            app:popUpTo="@id/instructionFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/newShoeListFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/newShoeListFragment"

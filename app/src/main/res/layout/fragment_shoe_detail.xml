@@ -55,7 +55,7 @@
             style="@style/text_style"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/name_text"
-            android:layout_marginTop="@dimen/marginlarge"
+            android:layout_marginTop="@dimen/small_margin"
             app:layout_constraintEnd_toStartOf="@id/enter_company"
             app:layout_constraintBottom_toBottomOf="@id/enter_company"
             android:layout_marginEnd="@dimen/small_margin"
@@ -128,6 +128,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/enter_description" />
 

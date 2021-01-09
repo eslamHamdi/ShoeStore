@@ -28,6 +28,7 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
     var Description:String= "null"
     var Image: MutableList<String> = mutableListOf()
     var shoe: Shoe? =Shoe("null",0.0,"null","null")
+    var flag = false
     val viewModel: ShowListViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -62,25 +63,38 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
             // Apply the adapter to the spinner
             spinner.adapter = adapter
         }
+        spinner.prompt = "Choose an Image"
         spinner.onItemSelectedListener = this
 
 
 
 
         binding.shoeSave.setOnClickListener {
+            //avoid choosing title as image source
+            flag = Image.contains("Images :")
 
-            shoe?.apply {
+            if (!flag)
+            {
+                shoe?.apply {
 
-                this.name = Name
-                this.company = Company
-                this.size = Size.toDouble()
-                this.description = Description
-                this.images = Image
+                    this.name = Name
+                    this.company = Company
+                    this.size = Size.toDouble()
+                    this.description = Description
+                    this.images = Image
+                }
+
+
+                findNavController().navigate(ShoeDetailFragmentDirections
+                    .actionShoeDetailFragmentToNewShoeListFragment(shoe))
             }
 
+            else
+            {
+                Image.clear()
+                Toast.makeText(this.requireContext(),"Please ChooseProper Image",Toast.LENGTH_SHORT).show()
+            }
 
-            findNavController().navigate(ShoeDetailFragmentDirections
-                    .actionShoeDetailFragmentToNewShoeListFragment(shoe))
         }
         binding.cancel.setOnClickListener {
 
@@ -106,12 +120,9 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
     {
-       if (position > 0)
-       {
+
            val image = parent?.getItemAtPosition(position).toString()
            Image.add(image)
-       }
-
 
     }
 
@@ -119,6 +130,7 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
     {
         Toast.makeText(this.requireContext(),"Don't Forget to Choose Image",Toast.LENGTH_SHORT).show()
     }
+
 
 
 }
