@@ -32,6 +32,10 @@
     <string name="shoes_list">ShoeList</string>
     <string name="_instructions">Instructions</string>
     <string name="log_out">LogOut</string>
+    <string name="shoename">ShoeName</string>
+    <string name="showcompany">ShoeCompany</string>
+    <string name="shoesize">ShoeSize</string>
+    <string name="shoe_description">Description</string>
 
     <string-array name="shoes_array">
         <item>Images :</item>
