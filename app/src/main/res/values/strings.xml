@@ -14,7 +14,7 @@
     <string name="use_shoe_detail_page">2-Use Shoe Detail Page to add more shoes to the list</string>
     <string name="navigate_to_shoe_list">Navigate to shoe list</string>
     <string name="shoesname">Name: %1$s</string>
-    <string name="shoessize">Size: %1$d</string>
+    <string name="shoessize">Size: %1$s</string>
     <string name="shoescompany">Company: %1$s</string>
     <string name="description">Description: %1$s</string>
     <string name="addshoes">addshoes</string>
@@ -29,6 +29,8 @@
     <string name="shoelist_drawer">ShoeList</string>
     <string name="addnewitem">AddNewItem</string>
     <string name="zero">0.0</string>
+    <string name="shoes_list">ShoeList</string>
+    <string name="_instructions">Instructions</string>
 
     <string-array name="shoes_array">
         <item>Images :</item>

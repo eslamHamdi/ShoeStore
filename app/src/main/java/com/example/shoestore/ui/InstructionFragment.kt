@@ -24,7 +24,7 @@ class InstructionFragment : Fragment() {
 
         binding.proceed.setOnClickListener {
 
-            findNavController().navigate(InstructionFragmentDirections.actionInstructionFragmentToNewShoeListFragment())
+            findNavController().navigate(InstructionFragmentDirections.actionInstructionFragmentToNewShoeListFragment(null))
         }
         return binding.root
     }

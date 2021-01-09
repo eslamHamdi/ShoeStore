@@ -49,10 +49,10 @@ class ShoeListAdapter(var ShoesList: MutableList<Shoe?>?):RecyclerView.Adapter<S
         val id = context!!.resources.getIdentifier(image__name, "drawable", context.packageName)
         holder.Image?.setImageResource(id)
 
-        holder.Name?.text   =  ShoesList?.get(position)?.name
-        holder.Company?.text   = ShoesList?.get(position)?.company
-        holder.Size?.text = ShoesList?.get(position)?.size.toString()
-        holder.Description?.text = ShoesList?.get(position)?.description
+        holder.Name?.text = context.resources.getString(R.string.shoesname,ShoesList?.get(position)?.name)
+        holder.Company?.text   = context.resources.getString(R.string.shoescompany,ShoesList?.get(position)?.company)
+        holder.Size?.text = context.resources.getString(R.string.shoessize,ShoesList?.get(position)?.size.toString())
+        holder.Description?.text = context.resources.getString(R.string.description,ShoesList?.get(position)?.description)
 
 
 

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
@@ -88,7 +89,7 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
         binding.cancel.setOnClickListener {
 
             findNavController().navigate(ShoeDetailFragmentDirections
-                    .actionShoeDetailFragmentToNewShoeListFragment())
+                    .actionShoeDetailFragmentToNewShoeListFragment(null))
         }
 
 
@@ -103,7 +104,6 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
         outState.putString("Name",Name)
         outState.putString("company",Company)
         outState.putString("description",Description)
-        //outState.putString("image",Image)
         outState.putDouble("size",Size)
 
     }
@@ -121,7 +121,7 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
     override fun onNothingSelected(parent: AdapterView<*>?)
     {
-         //Image.add("nike")
+        Toast.makeText(this.requireContext(),"Don't Forget to Choose Image",Toast.LENGTH_SHORT).show()
     }
 
 
