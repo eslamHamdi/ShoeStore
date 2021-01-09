@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/marginlarge"
             android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginStart="@dimen/small_margin"
             android:text="@string/shoename"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"/>
@@ -55,6 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_margin"
             android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginStart="@dimen/small_margin"
             android:text="@string/showcompany"
             app:layout_constraintBottom_toBottomOf="@id/enter_company"
             app:layout_constraintEnd_toStartOf="@id/enter_company"
@@ -81,6 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/marginlarge"
             android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginStart="@dimen/small_margin"
             android:text="@string/shoesize"
             app:layout_constraintEnd_toStartOf="@id/enter_size"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,6 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/marginlarge"
             android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginStart="@dimen/small_margin"
             android:text="@string/shoe_description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/size_text"/>
@@ -130,6 +134,7 @@
             android:layout_marginTop="@dimen/small_margin"
             android:layout_marginBottom="@dimen/small_margin"
             app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/small_margin"
             app:layout_constraintTop_toBottomOf="@id/enter_description" />
 
         <Button
