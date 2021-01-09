@@ -24,7 +24,7 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
      var Name:String = "null"
     var Company:String = "null"
-    var Size :Double = 0.0
+    var Size :String = "0.0"
     var Description:String= "null"
     var Image: MutableList<String> = mutableListOf()
     var shoe: Shoe? =Shoe("null",0.0,"null","null")
@@ -39,6 +39,8 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
         val binding :FragmentShoeDetailBinding = DataBindingUtil
                 .inflate(inflater,R.layout.fragment_shoe_detail,container,false)
+
+        binding.detailFragment = this
 
         if (savedInstanceState != null)
         {
@@ -67,17 +69,11 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
         binding.shoeSave.setOnClickListener {
 
-            Name = binding.enterName.text.toString()
-            Company = binding.enterCompany.text.toString()
-            Size = binding.enterSize.text.toString().toDouble()
-            Description =binding.enterDescription.text.toString()
-
-
             shoe?.apply {
 
                 this.name = Name
                 this.company = Company
-                this.size = Size
+                this.size = Size.toDouble()
                 this.description = Description
                 this.images = Image
             }
@@ -104,7 +100,7 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
         outState.putString("Name",Name)
         outState.putString("company",Company)
         outState.putString("description",Description)
-        outState.putDouble("size",Size)
+        outState.putString("size",Size)
 
     }
 

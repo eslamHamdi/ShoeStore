@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     fun checkingDrawerState(navController:NavController,drawerLayout:DrawerLayout)
     {
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            if (destination.id == R.id.welcomeFragment)
+            if (destination.id == controller.graph.startDestination)
             {
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
 
