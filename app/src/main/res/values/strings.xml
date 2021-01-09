@@ -31,6 +31,7 @@
     <string name="zero">0.0</string>
     <string name="shoes_list">ShoeList</string>
     <string name="_instructions">Instructions</string>
+    <string name="log_out">LogOut</string>
 
     <string-array name="shoes_array">
         <item>Images :</item>

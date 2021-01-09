@@ -30,23 +30,12 @@ val args:WelcomeFragmentArgs by navArgs()
 
             findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionFragment())
         }
-        setHasOptionsMenu(true)
+
 
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater)
-    {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.over_flow_menu,menu)
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean
-    {
-        return NavigationUI.onNavDestinationSelected(item,this.findNavController())||super.onOptionsItemSelected(item)
-
-
-    }
 
 
 }
