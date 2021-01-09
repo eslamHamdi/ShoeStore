@@ -45,7 +45,7 @@ class ShoeListAdapter(var ShoesList: MutableList<Shoe?>?):RecyclerView.Adapter<S
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
 
         val context = holder.Image?.context
-        val image__name = ShoesList?.get(position)?.images?.first()
+        val image__name = ShoesList?.get(position)?.images?.first() ?: ""
         val id = context!!.resources.getIdentifier(image__name, "drawable", context.packageName)
         holder.Image?.setImageResource(id)
 
