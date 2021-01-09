@@ -6,18 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentNewShoeListBinding
+import timber.log.Timber
 
 
 class NewShoeListFragment : Fragment() {
 
     val args :NewShoeListFragmentArgs by navArgs()
     var adapter = ShoeListAdapter(null)
+    val viewModel: ShowListViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,13 +32,19 @@ class NewShoeListFragment : Fragment() {
         val recycler = binding.recycler
         recycler.adapter = adapter
 
-        val viewModel:ShowListViewModel by viewModels()
+
 
         val shoe = args.shoeOpject
 
+        Timber.e(println(shoe).toString())
+
         viewModel.getShoeData(shoe)
 
+
+
         viewModel.shoeLiveData.observe(this.requireActivity(),{
+
+
 
             adapter.getShoeList(it)
         })

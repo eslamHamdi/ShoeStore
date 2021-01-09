@@ -10,11 +10,13 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentShoeDetailBinding
 import com.example.shoestore.model.Shoe
+import com.example.shoestore.ui.newshoelist.ShowListViewModel
 
 
 class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
@@ -23,11 +25,9 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
     var Company:String = "null"
     var Size :Double = 0.0
     var Description:String= "null"
-    var Image :String = "null"
-    var shoe: Shoe? =null
-    lateinit var viewModel:ShowDetailViewModel
-    lateinit var factory: ViewModelFactory
-
+    var Image: MutableList<String> = mutableListOf()
+    var shoe: Shoe? =Shoe("null",0.0,"null","null")
+    val viewModel: ShowListViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +36,18 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
     {
         // Inflate the layout for this fragment
 
-        val binding :FragmentShoeDetailBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_shoe_detail,container,false)
+        val binding :FragmentShoeDetailBinding = DataBindingUtil
+                .inflate(inflater,R.layout.fragment_shoe_detail,container,false)
+
+        if (savedInstanceState != null)
+        {
+           binding.enterName.text = savedInstanceState.get("Name") as Editable?
+             binding.enterCompany.text = savedInstanceState.get("company") as Editable?
+        binding.enterSize.text = savedInstanceState.get("size") as Editable?
+           binding.enterDescription.text = savedInstanceState.get("description") as Editable?
+
+        }
+
         val spinner:Spinner =binding.spinner
         ArrayAdapter.createFromResource(
                 this.requireContext(),
@@ -48,27 +59,18 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
             // Apply the adapter to the spinner
             spinner.adapter = adapter
         }
-
-
-        if (savedInstanceState != null)
-        {
-           binding.enterName.text = savedInstanceState.get("Name") as Editable?
-             binding.enterCompany.text = savedInstanceState.get("company") as Editable?
-        binding.enterSize.text = savedInstanceState.get("size") as Editable?
-           binding.enterDescription.text = savedInstanceState.get("description") as Editable?
-
-        }
-
-        Name = binding.enterName.text.toString()
-        Company = binding.enterCompany.text.toString()
-        Size = binding.enterSize.text.toString().toDouble()
-        Description =binding.enterDescription.text.toString()
-
+        spinner.onItemSelectedListener = this
 
 
 
 
         binding.shoeSave.setOnClickListener {
+
+            Name = binding.enterName.text.toString()
+            Company = binding.enterCompany.text.toString()
+            Size = binding.enterSize.text.toString().toDouble()
+            Description =binding.enterDescription.text.toString()
+
 
             shoe?.apply {
 
@@ -76,15 +78,12 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
                 this.company = Company
                 this.size = Size
                 this.description = Description
-                this.images.toMutableList().add(Image)
-
+                this.images = Image
             }
-            factory = ViewModelFactory(shoe)
-            viewModel = ViewModelProvider(this, factory)
-                    .get(ShowDetailViewModel::class.java)
+
 
             findNavController().navigate(ShoeDetailFragmentDirections
-                    .actionShoeDetailFragmentToNewShoeListFragment(viewModel.getShoe()))
+                    .actionShoeDetailFragmentToNewShoeListFragment(shoe))
         }
         binding.cancel.setOnClickListener {
 
@@ -104,21 +103,25 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
         outState.putString("Name",Name)
         outState.putString("company",Company)
         outState.putString("description",Description)
-        outState.putString("image",Image)
+        //outState.putString("image",Image)
         outState.putDouble("size",Size)
 
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
     {
-        if (position > 0)
-       Image = parent?.getItemAtPosition(position).toString()
+       if (position > 0)
+       {
+           val image = parent?.getItemAtPosition(position).toString()
+           Image.add(image)
+       }
+
 
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?)
     {
-
+         //Image.add("nike")
     }
 
 

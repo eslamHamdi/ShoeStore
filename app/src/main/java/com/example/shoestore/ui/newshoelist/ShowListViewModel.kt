@@ -4,22 +4,23 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shoestore.model.Shoe
+import timber.log.Timber
 
 
 class ShowListViewModel:ViewModel() {
 
-   private var shoeList : ArrayList<Shoe?>?=null
+   private var shoeList : MutableList<Shoe?>?=null
 
     init
     {
-        shoeList = ArrayList()
+        shoeList = mutableListOf()
 
     }
 
 
-    private var _shoeListliveData = MutableLiveData<ArrayList<Shoe?>?>()
+    private var _shoeListliveData = MutableLiveData<MutableList<Shoe?>?>()
 
-    val shoeLiveData:LiveData<ArrayList<Shoe?>?>
+    val shoeLiveData:LiveData<MutableList<Shoe?>?>
             get() = _shoeListliveData
 
 
@@ -27,7 +28,14 @@ class ShowListViewModel:ViewModel() {
     {
         shoeList?.add(shoe)
         _shoeListliveData.value = shoeList
+
+        println(shoeList)
     }
 
+    override fun onCleared()
+    {
+        super.onCleared()
+        Timber.e("viewModel destroyed")
+    }
 
 }

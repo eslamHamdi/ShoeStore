@@ -1,4 +1,4 @@
-package com.example.shoestore
+package com.example.shoestore.ui.main_activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,8 +10,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.shoestore.R
 import com.example.shoestore.databinding.ActivityMainBinding
-import com.example.shoestore.ui.WelcomeFragmentDirections
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
                 //setContentView(R.layout.activity_main)
 
-        val binding :ActivityMainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        val binding :ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         drawer = binding.drawer
         toolbar = binding.toolbar
