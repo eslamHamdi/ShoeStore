@@ -47,6 +47,7 @@
             app:layout_constraintBottom_toBottomOf="@id/name_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/name_text"
+            android:imeOptions="actionDone"
             app:layout_constraintTop_toTopOf="@id/name_text"/>
 
         <TextView
@@ -74,7 +75,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/company_text"
             app:layout_constraintTop_toTopOf="@id/company_text"
-            />
+            android:imeOptions="actionDone" />
 
         <TextView
             android:id="@+id/size_text"
@@ -99,6 +100,7 @@
             app:layout_constraintBottom_toBottomOf="@id/size_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/size_text"
+            android:imeOptions="actionDone"
             app:layout_constraintTop_toTopOf="@id/size_text"/>
 
         <TextView
@@ -125,6 +127,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/description_text"
             app:layout_constraintTop_toTopOf="@id/description_text"
+            android:imeOptions="actionDone"
          />
 
         <Spinner

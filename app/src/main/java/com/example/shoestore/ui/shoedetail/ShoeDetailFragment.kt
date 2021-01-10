@@ -135,4 +135,6 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
 
 
+
+
 }

@@ -1,11 +1,14 @@
 package com.example.shoestore.ui.newshoelist
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,6 +18,7 @@ import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentNewShoeListBinding
 import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
+import kotlin.system.exitProcess
 
 
 class NewShoeListFragment : Fragment() {
@@ -24,20 +28,24 @@ class NewShoeListFragment : Fragment() {
     //Activity model view model
     val viewModel: ShowListViewModel by activityViewModels()
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val binding:FragmentNewShoeListBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_new_shoe_list,container,false)
+
        //using a recycler for dynamic item adding instead of listview or addview
         val recycler = binding.recycler
         recycler.adapter = adapter
         val shoe = args.shoeOpject
+
 //checking if the shoe is null to avoid adding null objects to the list
 if (shoe != null)
 {
-    Timber.e(println(shoe).toString())
+
 
     viewModel.getShoeData(shoe)
 
@@ -78,10 +86,16 @@ if (shoe != null)
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean
     {
+        this.childFragmentManager.popBackStack(R.id.loginFragment,POP_BACK_STACK_INCLUSIVE)
         return NavigationUI.onNavDestinationSelected(item,this.findNavController())||super.onOptionsItemSelected(item)
 
 
     }
+
+
+
+
+
 
 
 }

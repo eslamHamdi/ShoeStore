@@ -1,7 +1,10 @@
 package com.example.shoestore.ui.main_activity
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
@@ -14,14 +17,16 @@ import com.example.shoestore.R
 import com.example.shoestore.databinding.ActivityMainBinding
 import timber.log.Timber
 
+
 class MainActivity : AppCompatActivity() {
 
     lateinit var drawer:DrawerLayout
     lateinit var toolbar :Toolbar
     lateinit var appBarconfig : AppBarConfiguration
+    lateinit var navController:NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-                //setContentView(R.layout.activity_main)
+        Timber.plant(Timber.DebugTree())
 
         val binding :ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
@@ -30,18 +35,18 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
-        val navController = this.findNavController(R.id.myNavHostFragment)
+         navController = this.findNavController(R.id.myNavHostFragment)
 
-        setupActionBarWithNavController(navController,drawer)
-        NavigationUI.setupWithNavController(binding.navView,navController)
-        appBarconfig = AppBarConfiguration(navController.graph,drawer)
-        checkingDrawerState(navController,drawer)
+        setupActionBarWithNavController(navController, drawer)
+        NavigationUI.setupWithNavController(binding.navView, navController)
+        appBarconfig = AppBarConfiguration(navController.graph, drawer)
+        checkingDrawerState(navController, drawer)
 
 
-        Timber.plant(Timber.DebugTree())
+
 
     }
-    fun checkingDrawerState(navController:NavController,drawerLayout:DrawerLayout)
+    fun checkingDrawerState(navController: NavController, drawerLayout: DrawerLayout)
     {
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             if (destination.id == controller.graph.startDestination)
@@ -58,9 +63,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean
     {
-        val navController = findNavController(R.id.myNavHostFragment)
-        return NavigationUI.navigateUp(navController,drawer)
+
+        return NavigationUI.navigateUp(navController, drawer)
     }
+//hiding keyboard if edit texts out of focus
+    override fun onUserInteraction()
+    {
+        super.onUserInteraction()
+        if (currentFocus != null)
+        {
+            val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+        }
+    }
+
+
+
+
 }
 
 
