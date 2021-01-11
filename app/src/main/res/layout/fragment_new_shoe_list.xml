@@ -6,38 +6,39 @@
     <data>
 
     </data>
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         tools:context=".ui.newshoelist.NewShoeListFragment">
-
-        <LinearLayout
-            android:id="@+id/linearlayout"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler"
+            <LinearLayout
+                android:id="@+id/linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/show_item" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/float_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
-                android:layout_margin="16dp"
-                android:contentDescription="@string/addshoes"
-                android:src="@android:drawable/ic_menu_edit" />
+                android:orientation="vertical">
 
 
-        </LinearLayout>
+            </LinearLayout>
 
 
-    </ScrollView>
+
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/float_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/addshoes"
+            android:src="@android:drawable/ic_menu_edit"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
+
 </layout>
