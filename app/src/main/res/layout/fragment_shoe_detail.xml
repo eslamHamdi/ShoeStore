@@ -96,12 +96,13 @@
             android:layout_height="wrap_content"
             android:hint="@string/size_entry"
             android:padding="@dimen/small_margin"
-            android:text="@={detailFragment.size}"
+          android:inputType="numberDecimal"
             app:layout_constraintBottom_toBottomOf="@id/size_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/size_text"
             android:imeOptions="actionDone"
-            app:layout_constraintTop_toTopOf="@id/size_text"/>
+            android:text="@={detailFragment.size}"
+            app:layout_constraintTop_toTopOf="@id/size_text" />
 
         <TextView
             android:id="@+id/description_text"
