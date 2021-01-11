@@ -105,7 +105,7 @@ class NewShoeListFragment : Fragment()
 
     fun addingItems(list: MutableList<Shoe?>?)
     {
-       linearLayout.removeAllViews()
+       //linearLayout.removeAllViews()
         for (item in list!!)
         {
             if (item != null)
@@ -114,14 +114,14 @@ class NewShoeListFragment : Fragment()
                 if(activity != null && isAdded)
                 {
                     val view = itemInflator()
-                    name.text = item.name
-                    size.text = item.size.toString()
-                    company.text = item.company
-                    descripe.text = item.description
+                    name.text = getString(R.string.shoesname,item.name)
+                    size.text = getString(R.string.shoessize,item.size.toString())
+                    company.text = getString(R.string.shoescompany,item.company)
+                    descripe.text = getString(R.string.description,item.description)
                     val uri = "@drawable/${item.images.first()}"
                     val imageResource = this.activity?.resources?.getIdentifier(uri, null, this.requireContext().packageName)
                     image.setImageResource(imageResource!!)
-                    linearLayout.addView(view, list.indexOf(item))
+                    linearLayout.addView(view)
                 }
 
             }

@@ -7,13 +7,14 @@
     <data>
 
     </data>
-
+    <!-- used constraintlayout to put textviews beside edittexts with
+    ease besides easy buttons positioning using chains -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
-        <!-- TODO: Update blank fragment layout -->
+
         <TextView
             android:id="@+id/email"
             style="@style/text_style"

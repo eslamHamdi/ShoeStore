@@ -121,7 +121,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/description_entry"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:padding="@dimen/small_margin"
             android:text="@={detailFragment.description}"
             app:layout_constraintBottom_toBottomOf="@id/description_text"
