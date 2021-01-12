@@ -8,7 +8,8 @@
     name="detailFragment"
     type="com.example.shoestore.ui.shoedetail.ShoeDetailFragment" />
     </data>
-
+    <!-- used constraintlayout to put textviews beside edittexts with
+       ease besides easy buttons positioning using chains as its more complex layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

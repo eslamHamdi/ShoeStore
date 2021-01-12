@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
-
+    <!-- used linearlayout here just to add all the views vertically
+     on an automatic way with no special costraints-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

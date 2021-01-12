@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.shoestore.model.Shoe
 import timber.log.Timber
 
-
+//the shared view Model
 class ShowListViewModel:ViewModel() {
 
    private var shoeList : MutableList<Shoe?>?=null
@@ -20,6 +20,7 @@ class ShowListViewModel:ViewModel() {
 
     private var _shoeListliveData = MutableLiveData<MutableList<Shoe?>?>()
 
+    //applying encapsulation
     val shoeLiveData:LiveData<MutableList<Shoe?>?>
             get() = _shoeListliveData
 
@@ -29,7 +30,6 @@ class ShowListViewModel:ViewModel() {
         shoeList?.add(shoe)
         _shoeListliveData.value = shoeList
 
-        println(shoeList)
     }
 
     override fun onCleared()

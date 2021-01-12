@@ -1,7 +1,6 @@
 package com.example.shoestore.ui.main_activity
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         drawer = binding.drawer
         toolbar = binding.toolbar
 
+        //add toolbar as actionbar
         setSupportActionBar(toolbar)
 
          navController = this.findNavController(R.id.myNavHostFragment)
@@ -46,6 +46,8 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    //ensuring that the drawer active only on the start destination
     fun checkingDrawerState(navController: NavController, drawerLayout: DrawerLayout)
     {
         navController.addOnDestinationChangedListener { controller, destination, arguments ->

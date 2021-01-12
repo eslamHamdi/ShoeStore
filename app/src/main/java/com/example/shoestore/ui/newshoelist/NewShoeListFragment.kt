@@ -1,19 +1,21 @@
 package com.example.shoestore.ui.newshoelist
 
-import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.*
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentNewShoeListBinding
+import com.example.shoestore.databinding.ShowItemBinding
 import com.example.shoestore.model.Shoe
+import kotlin.system.exitProcess
 
 
 class NewShoeListFragment : Fragment()
@@ -21,17 +23,25 @@ class NewShoeListFragment : Fragment()
 
     val args: NewShoeListFragmentArgs by navArgs()
 
-    lateinit var name: TextView
-    lateinit var size: TextView
-    lateinit var company: TextView
-    lateinit var descripe: TextView
-    lateinit var image: ImageView
-    //lateinit var viewItem: View
-    var activity: Activity? = null
+   lateinit var viewItem:ShowItemBinding
 
-    //Activity model view model
+    //Activity level view model
     val viewModel: ShowListViewModel by activityViewModels()
+
     lateinit var linearLayout: LinearLayout
+
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+
+        //ensuring exiting the app if the user pressed the back button
+        this.activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                exitApp()
+            }
+        })
+    }
 
 
     override fun onCreateView(
@@ -40,11 +50,11 @@ class NewShoeListFragment : Fragment()
     ): View?
     {
         // Inflate the layout for this fragment
-        val binding: FragmentNewShoeListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_new_shoe_list, container, false)
+        val binding: FragmentNewShoeListBinding = DataBindingUtil
+                .inflate(inflater, R.layout.fragment_new_shoe_list, container, false)
 
+         //parent layout for shoes items
         linearLayout = binding.linearlayout
-        activity = this.requireActivity()
-
 
         val shoe = args.shoeOpject
 
@@ -66,6 +76,7 @@ class NewShoeListFragment : Fragment()
             // if shoe is null do not add it and show the last saved list
             viewModel.shoeLiveData.observe(this.requireActivity(), {
 
+                 //this check to avoid error during navigating from instructions to the shoe list
                 if (it != null && it.isNotEmpty())
                 {
                     addingItems(it)
@@ -97,30 +108,29 @@ class NewShoeListFragment : Fragment()
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean
     {
-        this.childFragmentManager.popBackStack(R.id.loginFragment, POP_BACK_STACK_INCLUSIVE)
         return NavigationUI.onNavDestinationSelected(item, this.findNavController()) || super.onOptionsItemSelected(item)
-
 
     }
 
     fun addingItems(list: MutableList<Shoe?>?)
     {
-       //linearLayout.removeAllViews()
+        //linearLayout.removeAllViews()
+      //looping at each item in the shoe list to add a view for each one under parent linear layout
         for (item in list!!)
         {
             if (item != null)
             {
-
+                //avoiding illegalstate error by assuring that the fragment already attached to the activity
                 if(activity != null && isAdded)
                 {
                     val view = itemInflator()
-                    name.text = getString(R.string.shoesname,item.name)
-                    size.text = getString(R.string.shoessize,item.size.toString())
-                    company.text = getString(R.string.shoescompany,item.company)
-                    descripe.text = getString(R.string.description,item.description)
+                    viewItem.name.text = getString(R.string.shoesname,item.name)
+                    viewItem.size.text = getString(R.string.shoessize,item.size.toString())
+                    viewItem.company.text = getString(R.string.shoescompany,item.company)
+                    viewItem.description.text = getString(R.string.description,item.description)
                     val uri = "@drawable/${item.images.first()}"
-                    val imageResource = this.activity?.resources?.getIdentifier(uri, null, this.requireContext().packageName)
-                    image.setImageResource(imageResource!!)
+                    val imageResource = resources.getIdentifier(uri, null, this.requireContext().packageName)
+                    viewItem.image.setImageResource(imageResource)
                     linearLayout.addView(view)
                 }
 
@@ -129,16 +139,23 @@ class NewShoeListFragment : Fragment()
         }
 
     }
+
+    //inflate the shoe item view then binding to its corresponding data binding class
     fun itemInflator():View
     {
-      var viewItem = View.inflate(this.context, R.layout.show_item, null)
-            name = viewItem.findViewById(R.id.name)
-            size = viewItem.findViewById(R.id.size)
-            company = viewItem.findViewById(R.id.company)
-            descripe = viewItem.findViewById(R.id.description)
-            image = viewItem.findViewById(R.id.image)
+      val view = View.inflate(this.context, R.layout.show_item, null)
+         viewItem = DataBindingUtil.bind(view)!!
+        return view
+    }
 
-        return viewItem
+//method for immediate app exit
+    fun exitApp()
+    {
+
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME)
+        startActivity(intent)
+        exitProcess(0)
 
     }
 

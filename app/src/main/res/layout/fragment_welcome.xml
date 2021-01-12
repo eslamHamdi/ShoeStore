@@ -5,7 +5,9 @@
     <data>
 
     </data>
-
+    <!-- used linearlayout here as its a simple layout no need
+    to utilize constraint layout
+        -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

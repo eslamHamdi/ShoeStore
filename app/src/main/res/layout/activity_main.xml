@@ -7,6 +7,8 @@
     <data>
 
     </data>
+    <!-- used Linearlayout to put views vertically as a simpler way than constraint
+    -->
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer"
