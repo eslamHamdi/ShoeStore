@@ -9,13 +9,12 @@ import timber.log.Timber
 //the shared view Model
 class ShowListViewModel:ViewModel() {
 
-   private var shoeList : MutableList<Shoe?>?=null
-
-    init
-    {
-        shoeList = mutableListOf()
-
-    }
+   private var shoeList : MutableList<Shoe?>?=mutableListOf()
+    var name = ""
+    var company = ""
+    var description = ""
+    var size = "0.0"
+    var image:MutableList<String> = mutableListOf()
 
 
     private var _shoeListliveData = MutableLiveData<MutableList<Shoe?>?>()
@@ -25,13 +24,20 @@ class ShowListViewModel:ViewModel() {
             get() = _shoeListliveData
 
 
-    fun getShoeData(shoe:Shoe?)
+    fun getShoeData()
     {
+        //override empty string scenario
+        if (size=="")
+        {
+            size = "0.0"
+        }
+        val shoe: Shoe = Shoe(name,size.toDouble(),company,description,image)
         shoeList?.add(shoe)
         _shoeListliveData.value = shoeList
 
     }
 
+    //just for debugging and observing viewModel lifeCycle
     override fun onCleared()
     {
         super.onCleared()

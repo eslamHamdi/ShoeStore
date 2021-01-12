@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentNewShoeListBinding
@@ -21,7 +20,7 @@ import kotlin.system.exitProcess
 class NewShoeListFragment : Fragment()
 {
 
-    val args: NewShoeListFragmentArgs by navArgs()
+    //val args: NewShoeListFragmentArgs by navArgs()
 
    lateinit var viewItem:ShowItemBinding
 
@@ -56,23 +55,7 @@ class NewShoeListFragment : Fragment()
          //parent layout for shoes items
         linearLayout = binding.linearlayout
 
-        val shoe = args.shoeOpject
 
-//checking if the shoe is null to avoid adding null objects to the list
-        if (shoe != null)
-        {
-
-
-            viewModel.getShoeData(shoe)
-
-            viewModel.shoeLiveData.observe(this.requireActivity(), {
-
-                addingItems(it)
-            })
-
-
-        } else
-        {
             // if shoe is null do not add it and show the last saved list
             viewModel.shoeLiveData.observe(this.requireActivity(), {
 
@@ -82,11 +65,13 @@ class NewShoeListFragment : Fragment()
                     addingItems(it)
 
 
+                }else{
+                    //showing toast asking the user to add more items to the list
+                    Toast.makeText(this.requireContext(), "Please Add More Items", Toast.LENGTH_SHORT).show()
                 }
             })
-            //showing toast asking the user to add more items to the list
-            Toast.makeText(this.requireContext(), "Please Add More Items", Toast.LENGTH_SHORT).show()
-        }
+
+
 
 
 

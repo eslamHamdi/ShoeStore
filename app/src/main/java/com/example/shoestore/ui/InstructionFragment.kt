@@ -1,11 +1,11 @@
 package com.example.shoestore.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentInstructionBinding
@@ -24,7 +24,7 @@ class InstructionFragment : Fragment() {
 
         binding.proceed.setOnClickListener {
 
-            findNavController().navigate(InstructionFragmentDirections.actionInstructionFragmentToNewShoeListFragment(null))
+            findNavController().navigate(InstructionFragmentDirections.actionInstructionFragmentToNewShoeListFragment())
         }
         return binding.root
     }

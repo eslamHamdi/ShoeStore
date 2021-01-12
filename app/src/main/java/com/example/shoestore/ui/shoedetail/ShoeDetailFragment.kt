@@ -1,33 +1,22 @@
 package com.example.shoestore.ui.shoedetail
 
 import android.os.Bundle
-import android.text.Editable
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentShoeDetailBinding
-import com.example.shoestore.model.Shoe
 import com.example.shoestore.ui.newshoelist.ShowListViewModel
 
 
 class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
-     var Name:String = "null"
-    var Company:String = "null"
-    var Size :String = "0.0"
-    var Description:String= "null"
     var Image: MutableList<String> = mutableListOf()
-    var shoe: Shoe? =Shoe("",0.0,"","")
     val viewModel: ShowListViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -40,18 +29,9 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
         val binding :FragmentShoeDetailBinding = DataBindingUtil
                 .inflate(inflater,R.layout.fragment_shoe_detail,container,false)
 
-        binding.detailFragment = this
+        binding.viewModel = viewModel
 
 
-        //restoring ui after any configuration changes
-        if (savedInstanceState != null)
-        {
-           binding.enterName.text = savedInstanceState.get("Name") as Editable?
-             binding.enterCompany.text = savedInstanceState.get("company") as Editable?
-        binding.enterSize.text = savedInstanceState.get("size") as Editable?
-           binding.enterDescription.text = savedInstanceState.get("description") as Editable?
-
-        }
 
         val spinner:Spinner =binding.spinner
         ArrayAdapter.createFromResource(
@@ -70,48 +50,31 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
 
         binding.shoeSave.setOnClickListener {
 
-             //make sure the list is not empty
-            if ( Image.isNotEmpty())
-            {
-                shoe?.apply {
+              if (Image.isNotEmpty()){
+                  viewModel.getShoeData()
+                  restorefields()
 
-                    this.name = Name
-                    this.company = Company
-                    this.size = Size.toDouble()
-                    this.description = Description
-                    this.images = Image
-                }
-
-
-                findNavController().navigate(ShoeDetailFragmentDirections
-                    .actionShoeDetailFragmentToNewShoeListFragment(shoe))
-            }
-
+                  findNavController().navigate(ShoeDetailFragmentDirections
+                          .actionShoeDetailFragmentToNewShoeListFragment())
+              }
             else
-            {
-                Toast.makeText(this.requireContext(),"Please Choose Proper Image",Toast.LENGTH_SHORT).show()
-            }
+              {
+                  Toast.makeText(this.requireContext(),"Please Choose Proper Image",Toast.LENGTH_SHORT).show()
+              }
+
 
         }
+
         binding.cancel.setOnClickListener {
 
             findNavController().navigate(ShoeDetailFragmentDirections
-                    .actionShoeDetailFragmentToNewShoeListFragment(null))
-        }
+                    .actionShoeDetailFragmentToNewShoeListFragment())
+       }
 
 
         return binding.root
     }
-//configuration changes safety
-    override fun onSaveInstanceState(outState: Bundle)
-    {
-        super.onSaveInstanceState(outState)
-        outState.putString("Name",Name)
-        outState.putString("company",Company)
-        outState.putString("description",Description)
-        outState.putString("size",Size)
 
-    }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
     {
@@ -119,10 +82,12 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
            if(parent?.getItemAtPosition(position).toString() == getString(R.string.flag))
            {
                Toast.makeText(this.requireContext(),"Don't Forget to Choose Image",Toast.LENGTH_SHORT).show()
+
            }
         else
            {
                Image.add(parent?.getItemAtPosition(position).toString())
+               viewModel.image = Image
            }
 
 
@@ -132,6 +97,17 @@ class ShoeDetailFragment : Fragment(), AdapterView.OnItemSelectedListener{
     {
         Toast.makeText(this.requireContext(),"Don't Forget to Choose Image",Toast.LENGTH_SHORT).show()
     }
+
+    // restoring fields to default after saving an item to the list
+    fun restorefields()
+    {
+        viewModel.name =""
+        viewModel.company =""
+        viewModel.description =""
+        viewModel.size ="0.0"
+
+    }
+
 
 
 
