@@ -1,6 +1,6 @@
 # ShoeStore
 
-The contains single Activity and 5 fragments:
+The app contains single Activity and 5 fragments:
 Login
 Welcome
 Instructions screen
